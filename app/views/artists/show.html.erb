@@ -1,0 +1,11 @@
+
+<h1><%= @artist.name %></h1>
+<% if !!@artist.songs %> <br>
+<%= @artist.songs.count %> song
+<ul>
+    <% @artist.songs.each do |song| %>
+        <li><a href="/songs/<%= song.id %>"><%=song.title%></a></li><br>
+    <% end %>
+    
+<% end %>
+</ul>

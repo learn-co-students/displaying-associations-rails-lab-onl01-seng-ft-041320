@@ -1,4 +1,3 @@
-require 'pry'
 class ArtistsController < ApplicationController
 
   before_action :find_artist, except: [:index, :new, :create]
@@ -16,7 +15,6 @@ class ArtistsController < ApplicationController
 
   def create
     @artist = Artist.new(artist_params)
-
     if @artist.save
       redirect_to @artist
     else
@@ -28,9 +26,7 @@ class ArtistsController < ApplicationController
   end
 
   def update
-
     @artist.update(artist_params)
-
     if @artist.save
       redirect_to @artist
     else

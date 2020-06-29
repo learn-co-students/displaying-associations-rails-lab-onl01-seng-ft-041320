@@ -9,6 +9,6 @@ RSpec.describe Song, type: :model do
   end
 
   it "gets the artist name" do
-    expect(@grid.artist_name).to eq("Daft Punk")
+    expect(@grid.artist.name).to eq("Daft Punk")
   end
 end

@@ -1,8 +1,10 @@
 class ArtistsController < ApplicationController
   def index
+    @artists = Artist.all
   end
 
   def show
+    which_artist?
   end
 
   def new
@@ -20,11 +22,11 @@ class ArtistsController < ApplicationController
   end
 
   def edit
-    @artist = Artist.find(params[:id])
+    which_artist?
   end
 
   def update
-    @artist = Artist.find(params[:id])
+    which_artist?
 
     @artist.update(artist_params)
 
@@ -36,13 +38,17 @@ class ArtistsController < ApplicationController
   end
 
   def destroy
-    @artist = Artist.find(params[:id])
+    which_artist?
     @artist.destroy
     flash[:notice] = "Artist deleted."
     redirect_to artists_path
   end
 
   private
+
+  def which_artist?
+    @artist = Artist.find(params[:id])
+  end
 
   def artist_params
     params.require(:artist).permit(:name)
